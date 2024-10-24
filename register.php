@@ -41,7 +41,7 @@
 
 <body>
     <div >
-      <h1> Register your data</h1>
+      <h1> Register Your Self</h1>
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
             
          <div class="inputcontainer">
