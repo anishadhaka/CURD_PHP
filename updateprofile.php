@@ -1,13 +1,9 @@
-
+<?php include 'db.php';?>
 
 <?php
-  session_start();
+ 
   $id='';
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "userdata";
-  $conn = mysqli_connect($servername, $username, $password, $dbname) or die("connection failed");
+  
   if (isset($_POST["submit"])) {
     $username = $_POST['username'];
     $email = $_POST['email'];

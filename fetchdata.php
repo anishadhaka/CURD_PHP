@@ -1,11 +1,6 @@
-<?php
-session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "userdata";
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("connection failed");
+<?php include 'db.php';?>
+<?php
 if (isset($_POST['username']) && isset($_POST['password'])) 
 {
    // print_r($_POST);
