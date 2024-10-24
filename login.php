@@ -55,13 +55,13 @@ if (isset($_POST['submit']))
 
         <div class="input-group">
             <label>Username</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required>
             <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div>
 
         <div class="input-group">
             <label>password</label>
-            <input type="text" id="password" name="password">
+            <input type="text" id="password" name="password" required>
             <span id="passworderror"   class="error" style="color: red;"></span><br>
         </div>
 

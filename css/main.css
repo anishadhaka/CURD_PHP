@@ -4,14 +4,21 @@ body {
     background-repeat: no-repeat, repeat;
     background-size: cover;
   }
-  .btn{
-    text-decoration: none;
+  .button{
     font-size: 22px;
-    color: #f1f1f1;
-    background-color: #686565;
+    background-color: #15141446;
     padding: 8px 20px;
     /* margin-left:  80px; */
     bottom: 10px;
+  }
+  .button a{
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+  .button:hover {
+    background-color: #555;
+    color: white;
+    background-color: #848285cc;
   }
 .nav{
       

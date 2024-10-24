@@ -50,7 +50,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change password</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet"  href="./css/updatepass.css">
 </head>
 <?php include 'main.php';?>
 <body>
@@ -75,6 +75,6 @@ session_start();
         <button type="submit" class="btn" name="Reset">Reset</button>
         </div>
     </form>
- <script src="./js/update.js"></script>
+ <script src="./js/updatepass.js"></script>
 </body>
 </html>

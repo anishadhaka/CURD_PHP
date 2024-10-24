@@ -31,7 +31,7 @@
          <li><a href=""> <i class="fa-solid fa-star"></i> Pages</a></li>
          <li><a href=""> <i class="fa-solid fa-file-lines"></i></i> Docs</a></li> -->
          <div> 
-          <button class="btn"><a href="login.php">Logout</a></button> 
+          <button class="button"><a href="login.php">Logout</a></button> 
          </div> 
        </ul>
        
