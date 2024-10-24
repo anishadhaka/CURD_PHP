@@ -1,0 +1,23 @@
+
+       body {margin:0;
+             background-image: url("https://t4.ftcdn.net/jpg/03/46/02/03/360_F_346020347_7NZjfUbEdwP3N83wfzrHpufirqmLv20t.jpg");
+             /* background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); */
+             height:1000px;
+             background-repeat: no-repeat;
+             background-size: cover;
+       
+            }
+       
+       .btn{
+           background-color: #271a1d00; 
+           margin-left:-50 px;
+           color: black;
+           padding: 15px 32px;
+           text-align: center;
+           text-decoration: none;
+           font-size: 16px;
+           margin: 4px 2px;
+           cursor: pointer;
+           }
+       
+    

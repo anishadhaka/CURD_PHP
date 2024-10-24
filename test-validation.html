@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm();">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="errorMessages"></div>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            const errors = [];
+
+            // Validate Name
+            if (!validateName(name)) {
+                errors.push("Invalid name. Only letters, spaces, and '- or ' are allowed.");
+            }
+
+            // Validate Email
+            if (!validateEmail(email)) {
+                errors.push("Invalid email format.");
+            }
+
+            // Validate Phone
+            if (!validatePhoneNumber(phone)) {
+                errors.push("Invalid phone number. It should be 10 digits.");
+            }
+
+            // Display errors or proceed
+            const errorMessagesDiv = document.getElementById('errorMessages');
+            errorMessagesDiv.innerHTML = ""; // Clear previous messages
+
+            if (errors.length > 0) {
+                errorMessagesDiv.innerHTML = errors.join('<br>');
+                return false; // Prevent form submission
+            } else {
+                // If no errors, log success or perform any action
+                console.log("Form submitted successfully!");
+                return true; // Allow form submission
+            }
+        }
+
+        function validateName(name) {
+            const nameRegex = /^[A-Za-z\s'-]+$/;
+            return nameRegex.test(name);
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePhoneNumber(phone) {
+            const phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone);
+        }
+    </script>
+</body>
+</html>
