@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "userdata";
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("connection failed");
-if (isset($_POST['username']) && isset($_POST['password'])) 
+if (isset($_POST['submit'])) 
 {
    // print_r($_POST);
     $username = $_POST['username'];
@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
     $encryptpass = sha1($password);
 
       $sql= "SELECT * FROM userdata WHERE username='$username' AND password='$encryptpass'"; 
-    //  echo $sql;die;
+    //   echo $sql;die;
        
         $result = mysqli_query($conn, $sql); 
 
@@ -44,34 +44,35 @@ if (isset($_POST['username']) && isset($_POST['password']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration form</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
    
 </head>
 
 <body>
     <div class="header"></div>
     <h1>Login Profile</h1>
-    <form action="login.php" id="login" method="post"  onsubmit="return compare_hash()">
+    <form action="" id="login" method="post"  onsubmit="return loginvalidate()">
 
         <div class="input-group">
             <label>Username</label>
             <input type="text" id="username" name="username">
-            <p id="name" style="color: red;"></p>
+            <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div>
 
         <div class="input-group">
             <label>password</label>
             <input type="text" id="password" name="password">
-            <p id="pass" style="color: red;"></p>
+            <span id="passworderror"   class="error" style="color: red;"></span><br>
         </div>
 
         <div class="input-group">
-            <button type="submit" class="btn" name="submit" onsubmit="return login()"> Login</button>
+            <button type="submit" class="btn" name="submit" > Login</button>
         </div>
-        <p>
+        <p style="text-align:right;font-size:18px;">
              <a href="register.php">Sign up</a>
         </p>
     </form>
+    <!-- <script src="./js/login.js"></script> -->
 </body>
 
 </html>

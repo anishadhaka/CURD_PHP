@@ -41,7 +41,7 @@
 
 <body>
     <div >
-      <h1> Register Your Self</h1>
+      <h1> Register </h1>
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
             
          <div class="inputcontainer">
@@ -68,7 +68,7 @@
          </div>
        
           
-          <input type="submit" value="update" id="submit"  class="submit" />
+          <input type="submit" value="register" id="submit"  class="submit" />
           <input type="reset" value="reset"/>
           <p>
              <a href="login.php">Already login</a>

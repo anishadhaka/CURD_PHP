@@ -4,6 +4,15 @@ body {
     background-repeat: no-repeat, repeat;
     background-size: cover;
   }
+  .btn{
+    text-decoration: none;
+    font-size: 22px;
+    color: #f1f1f1;
+    background-color: #686565;
+    padding: 8px 20px;
+    /* margin-left:  80px; */
+    bottom: 10px;
+  }
 .nav{
       
   }
@@ -25,7 +34,7 @@ ul {
       position:fixed;
       /* width:284px; */
       background-color:rgb(28, 140, 142);
-      font-size: 21px;
+      font-size: 22px;
       
     
   }

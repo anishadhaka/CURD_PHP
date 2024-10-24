@@ -31,7 +31,7 @@ session_start();
                $count=mysqli_num_rows($result);
                if($count==1){
                {    
-                  header('location: dashboard.php');
+                  header('location: main.php');
                }
                } else {
                         echo "<script> alert('Incorrect details'); </script>";
@@ -52,7 +52,7 @@ session_start();
     <title>Change password</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-
+<?php include 'main.php';?>
 <body>
   <h1>Update password</h1>
     <form id="Reset" method="post">

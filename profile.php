@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
  <link rel="stylesheet" href="./css/register.css">
 
 </head>
-
+<?php include 'main.php';?>
 <body>
     <div >
       <h1> Profile</h1>
@@ -92,12 +92,12 @@ if (isset($_POST['submit'])) {
         </div>
          
        
-          <!-- <button> update</button> -->
-          <input type="submit" value="update" id="submit"  class="submit" />
+          
+          <!-- <input type="submit" value="update" id="submit"  class="submit" />
           <input type="reset" value="reset"/>
           <p>
              <a href="login.php">Already registered</a>
-          </p>
+          </p> -->
       </form>
     
 </div>

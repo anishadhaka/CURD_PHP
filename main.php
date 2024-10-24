@@ -17,20 +17,24 @@
        
          <!-- <li style="margin-top:70px;"><a href=""> <i class="fa-solid fa-droplet"></i> Colors</a></li> -->
          <li style="margin-top:70px;"><a href="profile.php"> <i class="fa-solid fa-pen"></i> Profile</a></li>
-         <li><a href="register.php"> <i class="fa-regular fa-paper-plane"></i>  Update Profile</a></li>
-         <li><a href="login.php"> <i class="fa-regular fa-paper-plane"></i>  login</a></li>
+         <li><a href="updateprofile.php"> <i class="fa-regular fa-paper-plane"></i>  Update Profile</a></li>
+         <!-- <li><a href="login.php"> <i class="fa-regular fa-paper-plane"></i>  login</a></li> -->
          <li><a href="updatepass.php"> <i class='fas fa-folder' style='font-size:20px;color:white'></i> Update Password</a></li>
    
    
-         <li><a href="userdata.php"> <i class="fa-solid fa-rectangle-list"></i> Userdata</a></li>
-         <li><a  href="Filtered_table.php"> <i class="fa-solid fa-chart-line" style='font-size:20px;color:white'></i> Filter Table</a></li>
+         <li><a href=""> <i class="fa-solid fa-rectangle-list"></i> Userdata</a></li>
+         
+         <li><a  href=""> <i class="fa-solid fa-chart-line" style='font-size:20px;color:white'></i> Search Data</a></li>
          <!-- <li><a href=""> <i class="fa-regular fa-star" style='font-size:20px;color:white'></i> Icons</a></li>
          <li><a href=""> <i class="fa-solid fa-bell" style='font-size:20px;color:white'></i> Notifications</a></li>
          <li><a href=""> <i class="fa-solid fa-bars"></i> Widgets</a></li>
          <li><a href=""> <i class="fa-solid fa-star"></i> Pages</a></li>
          <li><a href=""> <i class="fa-solid fa-file-lines"></i></i> Docs</a></li> -->
-         
+         <div> 
+          <button class="btn"><a href="login.php">Logout</a></button> 
+         </div> 
        </ul>
+       
     </nav>
     <div class="section2" style="margin-left:18%;padding:1px 0px;height:1000px;">
            <div class="navup">
@@ -43,11 +47,11 @@
                     <i class="fa-regular fa-envelope" style='color:gray;margin-left:1px;'></i>
                     <i class="fa-regular fa-sun" style='color:gray;'></i>
                 </div>
-            <div> 
+            <!-- <div> 
               
                     <button><a href="login.php">Logout</a></button> 
                     
-            </div> 
+            </div>  -->
             </div>
              <div class="nav2">
                <div><a href="">HOME</a></div>
