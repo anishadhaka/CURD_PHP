@@ -5,9 +5,9 @@ if (isset($_POST['submit']))
    // print_r($_POST);
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $encryptpass = sha1($password);
+    // $encryptpass = sha1($password);
 
-      $sql= "SELECT * FROM userdata WHERE username='$username' AND password='$encryptpass'"; 
+      $sql= "SELECT * FROM userdata WHERE username='$username' AND password='$password'"; 
     //   echo $sql;die;
        
         $result = mysqli_query($conn, $sql); 
@@ -17,7 +17,7 @@ if (isset($_POST['submit']))
         if($count>=1)
         {    
          $_SESSION['username'] = "$username";
-         $_SESSION['password'] = "$encryptpass"; 
+        //  $_SESSION['password'] = "$encryptpass"; 
          $_SESSION['id'] = $row['id']; 
          $_SESSION['username'] = $row['username']; 
 

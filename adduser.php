@@ -16,7 +16,7 @@
          VALUES ('$username','$number','$email','$password ')";
    
      if (mysqli_query($conn, $sql)) {
-        header('location: login.php'); 
+        header('location: userdata.php'); 
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
@@ -33,7 +33,7 @@
 
 <body>
     <div >
-      <h1> Register </h1>
+      <h1> ADD USER </h1>
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
             
          <div class="inputcontainer">
@@ -43,28 +43,26 @@
         </div> 
          <div class="inputcontainer">
             <lable for="number"> Number:</lable><br>
-            <input type="text" name="num" id="num" class="inputFieldRequired"  placeholder="enter your number" value="" data-errorid="#numerror"/><br>
+            <input type="text" name="num" id="num" class="inputFieldRequired"  placeholder="enter your number" value="" data-errorid="#numerror" required/><br>
             <span id="numerror"  class="error" style="color: red;"></span><br>
          </div>
          
          <div class="inputcontainer">
             <lable for="email">E-mail:</lable> <br>
-            <input type="email"name="email" id="email" class="inputFieldRequired"  placeholder="enter your email" value="" data-errorid="#emailerror"/><br>
+            <input type="email"name="email" id="email" class="inputFieldRequired"  placeholder="enter your email" value="" data-errorid="#emailerror" required/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
           
          <div class="inputcontainer">
                <lable for="password">Password:</lable> <br>
-               <input type="password"name="password" id="password" placeholder="" value=""/><br>
+               <input type="password"name="password" id="password" placeholder="" value=""/ required><br>
                <span id="passworderror"   class="error" style="color: red;"></span><br>
          </div>
        
           
-          <input type="submit" value="register" id="submit"  class="submit" />
-          <input type="reset" value="reset"/>
-          <p>
-             <a href="login.php">Already login</a>
-        </p>
+          <input type="submit" value="added" id="submit"  class="submit" />
+          
+         
       </form>
     
 </div>

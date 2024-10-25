@@ -1,8 +1,6 @@
+<?php include 'db.php';?>
 <?php
 session_start();
-
-$conn = mysqli_connect("localhost", "root", "", "userdata") or die("connection failed");
-
 // delete data
 if (isset($_POST['delete'])) {
     $id = $_POST['delete'];

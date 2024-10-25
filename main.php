@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +6,23 @@
    
 </head>
 <body>
-   
-   
-   <nav class="nav">
-       <ul>
-       <li class="active"><a  href=""><i class="fa-solid fa-plane-departure"></i> Absolute Global Travel</a></li>
        
-         <!-- <li style="margin-top:70px;"><a href=""> <i class="fa-solid fa-droplet"></i> Colors</a></li> -->
+        <nav class="nav">
+       <ul>
+       <li class="active"><a  href="main.php"><i class="fa-solid fa-plane-departure"></i> Absolute Global Travel</a></li>
+       
+        
          <li style="margin-top:70px;"><a href="profile.php"> <i class="fa-solid fa-pen"></i> Profile</a></li>
-         <li><a href="updateprofile.php"> <i class="fa-regular fa-paper-plane"></i>  Update Profile</a></li>
-         <!-- <li><a href="login.php"> <i class="fa-regular fa-paper-plane"></i>  login</a></li> -->
-         <li><a href="updatepass.php"> <i class='fas fa-folder' style='font-size:20px;color:white'></i> Update Password</a></li>
-   
-   
-         <li><a href=""> <i class="fa-solid fa-rectangle-list"></i> Userdata</a></li>
-         
+         <li><a href="userdata.php"> <i class="fa-solid fa-rectangle-list"></i> User</a></li>
+         <li><a href=""> <i class="fa-regular fa-paper-plane"></i>  Update Profile</a></li>
+         <li><a href=""> <i class="fa-regular fa-paper-plane"></i>  login</a></li>
+         <li><a href=""> <i class='fas fa-folder' style='font-size:20px;color:white'></i> Update Password</a></li>
          <li><a  href=""> <i class="fa-solid fa-chart-line" style='font-size:20px;color:white'></i> Search Data</a></li>
-         <!-- <li><a href=""> <i class="fa-regular fa-star" style='font-size:20px;color:white'></i> Icons</a></li>
+         <li><a href=""> <i class="fa-regular fa-star" style='font-size:20px;color:white'></i> Icons</a></li>
          <li><a href=""> <i class="fa-solid fa-bell" style='font-size:20px;color:white'></i> Notifications</a></li>
          <li><a href=""> <i class="fa-solid fa-bars"></i> Widgets</a></li>
          <li><a href=""> <i class="fa-solid fa-star"></i> Pages</a></li>
-         <li><a href=""> <i class="fa-solid fa-file-lines"></i></i> Docs</a></li> -->
+         <li><a href=""> <i class="fa-solid fa-file-lines"></i></i> Docs</a></li>
          <div> 
           <button class="button"><a href="login.php">Logout</a></button> 
          </div> 
@@ -46,6 +39,7 @@
                     <i class="fa-solid fa-list" style='color:gray;'></i>
                     <i class="fa-regular fa-envelope" style='color:gray;margin-left:1px;'></i>
                     <i class="fa-regular fa-sun" style='color:gray;'></i>
+                    <button class="logout-btn"><a href="login.php"><i class="fa-solid fa-right-from-bracket"></i></a></button>
                 </div>
             <!-- <div> 
               

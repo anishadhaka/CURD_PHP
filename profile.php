@@ -1,8 +1,7 @@
 
 <?php include 'db.php';?>
 <?php
-  
-  if (isset($_POST['username']) && isset($_POST['password'])) 
+    if (isset($_POST['username']) && isset($_POST['password'])) 
   {
      // print_r($_POST);
       $id = $_POST['id'];
@@ -85,8 +84,6 @@ if (isset($_POST['submit'])) {
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
          
-       
-          
           <!-- <input type="submit" value="update" id="submit"  class="submit" />
           <input type="reset" value="reset"/>
           <p>

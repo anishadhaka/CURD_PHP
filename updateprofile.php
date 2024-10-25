@@ -1,10 +1,9 @@
 <?php include 'db.php';?>
-
 <?php
  
   $id='';
-  
-  if (isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) {
+      
     $username = $_POST['username'];
     $email = $_POST['email'];
     $id = $_POST['id'];
@@ -14,13 +13,15 @@
     $sql = 'UPDATE `userdata` SET `username` = "' . $username . '",`email` = "' . $email . '", `number` = "' . $number . '" WHERE `id` = ' . $id;
     // print_r($sql); die;
     if (mysqli_query($conn, $sql)) {
-        $a= "Record updated successfully";
+       
+        header('location:userdata.php');
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }
 }
   //for fetch data
-  $id = $_SESSION['id'];
+  // $id = $_SESSION['id'];
+  $id = $_GET['id'];
 
   $sql = "SELECT *  FROM `userdata` WHERE `id` = '$id';";
   $result = mysqli_query($conn, $sql);
@@ -31,7 +32,13 @@
 <?php
 
 if (!isset($_SESSION['username'])) {
-  header('location: login.php');
+  header('location: userdata.php');
+}
+?>
+<?php
+if (isset($_POST['update'])) {
+  session_destroy();
+  header('location: userdata.php');
 }
 ?>
   
@@ -40,10 +47,11 @@ if (!isset($_SESSION['username'])) {
  <link rel="stylesheet" href="./css/updateprofile.css">
 
 </head>
-<?php include 'main.php';?>
+
 <body>
     <div >
       <h1> Update Profile</h1>
+     
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"> 
          <div class="inputcontainer">
@@ -62,11 +70,8 @@ if (!isset($_SESSION['username'])) {
             <input type="email"name="email" id="email" class="inputFieldRequired"  placeholder="enter your email" value="<?php echo $row['email']; ?>" data-errorid="#emailerror"/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
-          
-        
-          
           <input type="submit" value="update" id="submit" name="submit"  class="submit" />
-          <input type="reset" value="reset"/>
+          
 
       </form>
     

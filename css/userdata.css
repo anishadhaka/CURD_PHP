@@ -1,5 +1,5 @@
-
-  
+/* 
+ 
 
     * {
         margin: 0;
@@ -12,11 +12,43 @@
 
     body {
         background-color: #dcd7dc;
+        border: 5px double black;
+        margin-left: 200px;
+        margin-top: 100px;
     }
- 
-
-    table {
-        width: 100%;
+  
+   
+    
+   .logout-btn{
+            margin: -50px 0px 0px 1300px; 
+           padding: 10px;
+    } 
+   .logout-btn a{
+    background-color: rgb(239, 121, 221); 
+    color:rgb(11, 11, 11);
+    font-size: 20px;
+    font-weight: bold;
+}  */
+.main_content{
+    margin:10px 100px  0px 100px;
+    margin-left: 100px;
+    margin-right: 100px; 
+}
+.add-btn{
+    padding: 10px;
+   
+    margin-top:10px;
+   
+  border-color:rgb(231, 144, 236); ;
+}
+.add-btn a{
+    background-color: rgb(239, 121, 221);
+    color:rgb(11, 11, 11);
+    font-size: 20px;
+    font-weight: bold;
+} 
+table {
+         
         border-collapse: collapse;
         margin: 20px 0;
         box-shadow: 0 2px 10px rgba(103, 103, 103, 0.1);
@@ -36,4 +68,7 @@
         background-color: #d3266e;
         color: white;
     }
+    tr:nth-child(odd) {
+        background-color: #a3a1a1;
+    } 
 
