@@ -47,8 +47,9 @@ if (isset($_POST['update'])) {
  <link rel="stylesheet" href="./css/updateprofile.css">
 
 </head>
-
+<?php include 'main.php';?>
 <body>
+<h1 >User Data <i class="fa-solid fa-user"></i> </h1>
     <div >
       <h1> Update Profile</h1>
      

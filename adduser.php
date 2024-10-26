@@ -30,7 +30,7 @@
  <link rel="stylesheet" href="./css/register.css">
 
 </head>
-
+<?php include 'main.php';?>
 <body>
     <div >
       <h1> ADD USER </h1>

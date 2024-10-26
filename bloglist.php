@@ -1,18 +1,18 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "userdata") or die("connection failed");
+$conn = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
 // delete data
 if (isset($_POST['delete'])) {
     $id = $_POST['delete'];
-    header('location: userdata.php');
+    header('location: bloglist.php');
 
-    $sql = "DELETE FROM `userdata` where id=$id";
+    $sql = "DELETE FROM `customer` where id=$id";
     // echo $sql;
     // die;
 
     if (mysqli_query($conn, $sql)) {
 
-        header('location: userdata.php');
+        header('location: bloglist.php');
     } else {
         echo "data not delete";
     }
@@ -21,8 +21,8 @@ if (isset($_POST['delete'])) {
 
 ?>
 <?php
-$conn = mysqli_connect("localhost", "root", "", "userdata") or die("connection failed");
-$sql = "SELECT * FROM `userdata`;";
+$conn = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
+$sql = "SELECT * FROM `customer`;";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -44,7 +44,7 @@ $limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_serial = $limit * ($page - 1) + 1;
 $offset = ($page - 1) * $limit;
-$sql = "SELECT * FROM `userdata` LIMIT {$offset},{$limit}";
+$sql = "SELECT * FROM `customer` LIMIT {$offset},{$limit}";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -58,19 +58,20 @@ $result = mysqli_query($conn, $sql);
 <body>
    
        <div class="main_content">
-            <h1 >User Data <i class="fa-solid fa-user"></i> 
-            <button class="add-btn"><a href="adduser.php">  ADD USER <i class="fa-solid fa-plus"></i></a></button></h1>
+            <h1 >Bloglist_Data <i class="fa-solid fa-user"></i> 
+            <button class="add-btn"><a href="addbloglist.php">  Blog_List <i class="fa-solid fa-plus"></i></a></button></h1>
             <!-- <button class="logout-btn"><a href="main.php"><i class="fa-solid fa-right-from-bracket"></i></a></button> -->
                    <table class="center">
                        <tr>
                            <th>id</th>
-                           <th>username</th>
-                           <th>number</th>
-                           <th>email</th>
-                           <th>password</th>
-                           <th>update</th>
+                           <th>name</th>
+                           <th>title</th>
+                           <th>description</th>
+                           <th>create date</th>
+                           <th>update date</th>
+                           <th>delete status</th>
+                           <th>edit</th>
                            <th>delete</th>
-                           <th>reset_password</th>
                        </tr>
                        <tr>
                            <?php
@@ -80,11 +81,13 @@ $result = mysqli_query($conn, $sql);
    
                            ?>
                                <td> <?php echo $start_serial++; ?></td>
-                               <td> <?php echo $row['username']; ?></td>
-                               <td> <?php echo $row['number']; ?></td>
-                               <td> <?php echo $row['email']; ?></td>
-                               <td> <?php echo $row['password']; ?></td>
-                               <td> <a href="updateprofile.php?id=<?php echo $row['id'] ?>" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                               <td> <?php echo $row['name']; ?></td>
+                               <td> <?php echo $row['title']; ?></td>
+                               <td> <?php echo $row['description']; ?></td>
+                               <td> <?php echo $row['createdate']; ?></td>
+                               <td> <?php echo $row['updatedate']; ?></td>
+                               <td> <?php echo $row['deletestatus']; ?></td>
+                               <td> <a href="editbloglist.php?id=<?php echo $row['id'] ?>" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
                                <td>
                                    <form action="#" method="POST">
                                        <button type="submit" class="btn" name="delete" value="<?php echo $row['id'] ?>" style="    padding: 5px;
@@ -93,14 +96,14 @@ $result = mysqli_query($conn, $sql);
                                           border: 1px solid grey;"><i class="fa-solid fa-trash"></i></button>
                                    </form>
                                </td>
-                               <td> <a href="updatepass.php" class=""><i class="fa-solid fa-c"></i></a></td>
+                               <!-- <td> <a href="updatepass.php" class=""><i class="fa-solid fa-c"></i></a></td> -->
                        </tr>
                    <?php
                            }
                            ?>
                       </table>          
                       <?php
-                $sql1 = "SELECT * FROM `userdata`";
+                $sql1 = "SELECT * FROM `customer`";
                 $result1 = mysqli_query($conn, $sql1) or die("Query failed");
                 if (mysqli_num_rows($result1) > 0) {
                     $total_record = mysqli_num_rows($result1);
@@ -114,7 +117,7 @@ $result = mysqli_query($conn, $sql);
                             $active = "";
                         }
                       
-                        echo '<a class="' . $active . '" href="pagination.php?page=' . $i . '">' . $i . '</a>';
+                        echo '<a class="' . $active . '" href="bloglist.php?page=' . $i . '">' . $i . '</a>';
                     }
                     echo '</div>';
                 }

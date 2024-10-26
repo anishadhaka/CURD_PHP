@@ -50,8 +50,9 @@ if (isset($_SESSION['id']) && isset($_POST['oldpassword'])) {
     <title>Change password</title>
     <link rel="stylesheet"  href="./css/updatepass.css">
 </head>
-
+<?php include 'main.php';?>
 <body>
+<h1 >User Data <i class="fa-solid fa-user"></i> </h1>
   <h1>Update password</h1>
     <form id="Reset" method="post">
         <div class="input-group">
