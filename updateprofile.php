@@ -8,20 +8,20 @@
     $email = $_POST['email'];
     $id = $_POST['id'];
     $number = $_POST['num'];
- 
+    
 
     $sql = 'UPDATE `userdata` SET `username` = "' . $username . '",`email` = "' . $email . '", `number` = "' . $number . '" WHERE `id` = ' . $id;
     // print_r($sql); die;
     if (mysqli_query($conn, $sql)) {
        
-        header('location:userdata.php');
+        header('location:updateprofile.php');
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }
 }
   //for fetch data
   // $id = $_SESSION['id'];
-  $id = $_GET['id'];
+  $id =isset($_GET['id'])?$_GET['id']:print_r(" ");
 
   $sql = "SELECT *  FROM `userdata` WHERE `id` = '$id';";
   $result = mysqli_query($conn, $sql);
@@ -38,7 +38,7 @@ if (!isset($_SESSION['username'])) {
 <?php
 if (isset($_POST['update'])) {
   session_destroy();
-  header('location: userdata.php');
+  header('location: userdata .php');
 }
 ?>
   
@@ -49,6 +49,9 @@ if (isset($_POST['update'])) {
 </head>
 <?php include 'main.php';?>
 <body>
+<div> 
+          <button class="button"><a href="userdata.php" style="color:black;align:right;"> <i class="fa-solid fa-right-from-bracket fa-rotate-180""></i></a></button> 
+         </div> 
 <h1 >User Data <i class="fa-solid fa-user"></i> </h1>
     <div >
       <h1> Update Profile</h1>

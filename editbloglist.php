@@ -1,39 +1,41 @@
 
 <?php
-  session_start();
 
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "customer";
   $conn = mysqli_connect($servername, $username, $password, $dbname) or die("connection failed");
-   $id="";
+  
+   
     if (isset($_POST["submit"])) {
       
+      
       $name = $_POST['name'];
+      
       $title = $_POST['title'];
       $id = $_POST['id'];
       $description = $_POST['description'];
-      $createdate = $_POST['create date'];
-      $updatedate = $_POST['update date'];
-      $deletestatus = $_POST['delete status'];
+      $createdate = $_POST['createdate'];
+      $updatedate = $_POST['updatedate'];
+      $deletestatus = $_POST['deletestatus'];
       
-    
- 
-
+      
     $sql = 'UPDATE `customer` SET `name` = "' . $name . '",`title` = "' . $title . '", `description` = "' . $description . '",
-     `create date` = "' . $createdate . '" , `update date` = "' .$updatedate . '" WHERE `id` = ' . $id;
-    print_r($sql); die;
+     `createdate` = "' . $createdate . '" , `updatedate` = "' .$updatedate . '", `deletestatus` = "' .$deletestatus . '" WHERE `id` = "'. $id.'";';
+     
+    // print_r($sql); die;
     if (mysqli_query($conn, $sql)) {
-       
-        header('location:bloglist.php');
+      header('location: bloglist.php');
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }
 }
   //for fetch data
   // $id = $_SESSION['id'];
-  $id = $_GET['id'];
+  
+  $id =isset($_GET['id'])?$_GET['id']:print_r(" ");
 
   $sql = "SELECT *  FROM `customer` WHERE `id` = '$id';";
   $result = mysqli_query($conn, $sql);
@@ -42,8 +44,8 @@
 ?>
 <?php
 
-if (!isset($_SESSION['name'])) {
-  header('location: bloglist.php');
+if (!isset($_SESSION['username'])) {
+  header('location: login.php');
 }
 ?>
 <?php
@@ -68,7 +70,7 @@ if (isset($_POST['update'])) {
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"> 
       <div class="inputcontainer">
             <label for="name">NAME:</lable><br>
-            <input type="text" name="name" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['name']; ?>" data-errorid="#usernameerror" /><br>
+            <input type="text" name="name" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['name']; ?>"  /><br>
             <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div> 
          <div class="inputcontainer">
@@ -85,17 +87,17 @@ if (isset($_POST['update'])) {
           
          <div class="inputcontainer">
                <lable for="create date">Create date</lable> <br>
-               <input type="text"name="create date" id="password" placeholder="" value="<?php echo $row['create data']; ?>" required/><br>
+               <input type="text"name="createdate" id="password" placeholder="" value="<?php echo $row['createdate']; ?>" required/><br>
                <span id="passworderror"   class="error" style="color: red;"></span><br>
          </div>
          <div class="inputcontainer">
             <label for="update date">update date</lable><br>
-            <input type="text" name="update date" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['update data']; ?>" data-errorid="#usernameerror" /><br>
+            <input type="text" name="updatedate" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['updatedate']; ?>"  /><br>
             <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div> 
         <div class="inputcontainer">
             <label for="delete status">delete status</lable><br>
-            <input type="text" name="delete status" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['delete status']; ?>" data-errorid="#usernameerror" /><br>
+            <input type="text" name="deletestatus" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['deletestatus']; ?>"  /><br>
             <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div> 
         

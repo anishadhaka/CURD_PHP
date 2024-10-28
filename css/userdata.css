@@ -11,23 +11,28 @@
 
 .main_content{
     padding: 0px;
- 
+    /* border:  5px solid #0b0b0b; */
     margin-left: auto;
     margin-right: auto;
-   
+    height: fit-content;
     color: #a3a1a1;
+    width:fit-content
+    
    
 }
 .main_content h1{
+  
     text-align: center;
     color: #2b2a2a;
     height: auto;
     padding-top: 10px;
     background-color: #7299d5;
+    text-align: center;
+    
 }
 .add-btn{
     padding: 10px;
-    margin-left: 1000px;
+    margin-left: 500px;
     margin-top: -30px;
     margin-bottom: 10px;
     border: none;

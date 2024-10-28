@@ -14,7 +14,7 @@
         
          <li style="margin-top:70px;"><a href="profile.php"> <i class="fa-solid fa-pen"></i> Profile</a></li>
          <li><a href="userdata.php"> <i class="fa-solid fa-rectangle-list"></i> User</a></li>
-         <li><a href="blocklist.php"> <i class="fa-regular fa-paper-plane"></i>  Block_List</a></li>
+         <li><a href="bloglist.php"> <i class="fa-regular fa-paper-plane"></i>  Block_List</a></li>
          <li><a href=""> <i class="fa-regular fa-paper-plane"></i>  login</a></li>
          <li><a href=""> <i class='fas fa-folder' style='font-size:20px;color:white'></i> Update Password</a></li>
          <li><a  href=""> <i class="fa-solid fa-chart-line" style='font-size:20px;color:white'></i> Search Data</a></li>

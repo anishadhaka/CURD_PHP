@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $sql);
 <body>
    
        <div class="main_content">
-            <h1 >Bloglist_Data <i class="fa-solid fa-user"></i> 
+            <h1 >Bloglist <i class="fa-solid fa-user"></i> 
             <button class="add-btn"><a href="addbloglist.php">  Blog_List <i class="fa-solid fa-plus"></i></a></button></h1>
             <!-- <button class="logout-btn"><a href="main.php"><i class="fa-solid fa-right-from-bracket"></i></a></button> -->
                    <table class="center">

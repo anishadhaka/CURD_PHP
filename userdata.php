@@ -93,7 +93,7 @@ $result = mysqli_query($conn, $sql);
                                           border: 1px solid grey;"><i class="fa-solid fa-trash"></i></button>
                                    </form>
                                </td>
-                               <td> <a href="updatepass.php" class=""><i class="fa-solid fa-c"></i></a></td>
+                               <td> <a href="updatepass.php?id=<?php echo $row['id'] ?>" class=""><i class="fa-solid fa-c"></i></a></td>
                        </tr>
                    <?php
                            }
