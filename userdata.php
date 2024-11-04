@@ -1,5 +1,22 @@
 <?php
-session_start();
+        session_start();
+        if (!isset($_SESSION['username'])) {
+            header('location: login.php');
+        }
+        ?>
+<?php
+if (isset($_POST['Logout'])) {
+    session_destroy();
+    header('location: login.php');
+}
+?>
+<?php
+if (isset($_POST['Adduser'])) {
+    header('location: adduser.php');
+}
+?>
+<?php
+
 $conn = mysqli_connect("localhost", "root", "", "userdata") or die("connection failed");
 // delete data
 if (isset($_POST['delete'])) {
@@ -71,6 +88,7 @@ $result = mysqli_query($conn, $sql);
                            <th>update</th>
                            <th>delete</th>
                            <th>reset_password</th>
+                           <!-- <th>image</th> -->
                        </tr>
                        <tr>
                            <?php
@@ -94,6 +112,7 @@ $result = mysqli_query($conn, $sql);
                                    </form>
                                </td>
                                <td> <a href="updatepass.php?id=<?php echo $row['id'] ?>" class=""><i class="fa-solid fa-c"></i></a></td>
+                               <!-- <td> <img src="<?php echo $row['image'] ?>"/></td>  -->
                        </tr>
                    <?php
                            }
@@ -121,5 +140,5 @@ $result = mysqli_query($conn, $sql);
                 ?>
          
        </div>
-  
+       <!-- <img src="<?php echo $row['image'] ?>"/> -->
 </body>

@@ -20,10 +20,15 @@
       $createdate = $_POST['createdate'];
       $updatedate = $_POST['updatedate'];
       $deletestatus = $_POST['deletestatus'];
+      $file = $_FILES['image']['name'];
+     
+        $file_name = str_replace(" ", "", $file);
+        $tempname= $_FILES['image']['tmp_name'];
+        $folder = 'image/'.$file_name;
       
       
     $sql = 'UPDATE `customer` SET `name` = "' . $name . '",`title` = "' . $title . '", `description` = "' . $description . '",
-     `createdate` = "' . $createdate . '" , `updatedate` = "' .$updatedate . '", `deletestatus` = "' .$deletestatus . '" WHERE `id` = "'. $id.'";';
+     `createdate` = "' . $createdate . '" , `updatedate` = "' .$updatedate . '", `deletestatus` = "' .$deletestatus . '" , `image` = "' .$file_name . '"WHERE `id` = "'. $id.'";';
      
     // print_r($sql); die;
     if (mysqli_query($conn, $sql)) {
@@ -40,6 +45,7 @@
   $sql = "SELECT *  FROM `customer` WHERE `id` = '$id';";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
+  $Updatetime=date('Y-m-d ');
 
 ?>
 <?php
@@ -66,7 +72,7 @@ if (isset($_POST['update'])) {
     <div >
       <h1> Update blog_data</h1>
      
-      <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
+      <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" enctype="multipart/form-data" >
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"> 
       <div class="inputcontainer">
             <label for="name">NAME:</lable><br>
@@ -81,10 +87,10 @@ if (isset($_POST['update'])) {
          
          <div class="inputcontainer">
             <lable for="Description">Description</lable> <br>
-            <input type="text"name="description" id="email" class="inputFieldRequired"  placeholder="" value="<?php echo $row['description']; ?>" data-errorid="#emailerror" required/><br>
+            <input type="textarea"name="description" id="email" class="inputFieldRequired" style="width:100%;height:30px;border:1px solid" placeholder="" value="<?php echo $row['description']; ?>" data-errorid="#emailerror" required/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
-          
+        
          <div class="inputcontainer">
                <lable for="create date">Create date</lable> <br>
                <input type="text"name="createdate" id="password" placeholder="" value="<?php echo $row['createdate']; ?>" required/><br>
@@ -100,14 +106,28 @@ if (isset($_POST['update'])) {
             <input type="text" name="deletestatus" id="name" class="inputFieldRequired" placeholder="" value="<?php echo $row['deletestatus']; ?>"  /><br>
             <span id="usernameerror"  class="error" style="color: red;"></span><br>
         </div> 
-        
-       
+        <div class="image1">
+              <label>Image</label>
+              <img src="<?php echo $row['image'] ?>"/>
+              <input type="file" id="image" name="image"/>
+              <span style="color:red"><?php echo isset($error)?$error:'' ?></span>
+          </div>
+          
           
         <input type="submit" value="update" id="submit" name="submit"  class="submit" />
           
          
       </form>
-    
+   
+      <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+            editor.resize(300,500);
+    </script>
+    <script> CKEDITOR.replace('editor')</script>
     
 </div>
 

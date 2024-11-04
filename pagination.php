@@ -71,6 +71,7 @@ $result = mysqli_query($conn, $sql);
                            <th>update</th>
                            <th>delete</th>
                            <th>reset_password</th>
+                           <!-- <th>image</th> -->
                        </tr>
                        <tr>
                            <?php
@@ -94,6 +95,7 @@ $result = mysqli_query($conn, $sql);
                                    </form>
                                </td>
                                <td> <a href="updatepass.php" class=""><i class="fa-solid fa-c"></i></a></td>
+                               <!-- <td> <img src="<?php echo $row['image'] ?>"/></td> -->
                        </tr>
                    <?php
                            }
@@ -121,5 +123,5 @@ $result = mysqli_query($conn, $sql);
                 ?>
          
        </div>
-  
+       <img src="<?php echo $row['image'] ?>"/>
 </body>

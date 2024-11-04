@@ -48,7 +48,7 @@ if (isset($_SESSION['id']) && isset($_POST['oldpassword'])) {
     }
 }
 //for fetch data
-$id = $_GET['id'];
+$id = $_SESSION['id'];
 
 $sql = "SELECT *  FROM `userdata` WHERE `id` = '$id';";
 $result = mysqli_query($conn, $sql);

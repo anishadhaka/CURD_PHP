@@ -8,9 +8,15 @@
     $email = $_POST['email'];
     $id = $_POST['id'];
     $number = $_POST['num'];
+    // $file = $_FILES['image']['name'];
+     
+    // $file_name = str_replace(" ", "", $file);
+    // $tempname= $_FILES['image']['tmp_name'];
+    // $folder = 'image/'.$file_name;
     
 
     $sql = 'UPDATE `userdata` SET `username` = "' . $username . '",`email` = "' . $email . '", `number` = "' . $number . '" WHERE `id` = ' . $id;
+    
     // print_r($sql); die;
     if (mysqli_query($conn, $sql)) {
        
@@ -56,7 +62,7 @@ if (isset($_POST['update'])) {
     <div >
       <h1> Update Profile</h1>
      
-      <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
+      <form  name="form" method="post"  id="form"  onsubmit="return validateForm()"   enctype="multipart/form-data">
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>"> 
          <div class="inputcontainer">
             <label for="username">NAME:</lable><br>
@@ -74,12 +80,29 @@ if (isset($_POST['update'])) {
             <input type="email"name="email" id="email" class="inputFieldRequired"  placeholder="enter your email" value="<?php echo $row['email']; ?>" data-errorid="#emailerror"/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
+
+        <!-- <div class="image1">
+              <label>Image</label>
+              <img src="<?php echo $row['image'] ?>"/>
+              <input type="file" id="image" name="image"/>
+              <span style="color:red"><?php echo isset($error)?$error:'' ?></span>
+          </div> -->
+          
           <input type="submit" value="update" id="submit" name="submit"  class="submit" />
           
 
       </form>
     
 </div>
+<!-- <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+            editor.resize(300,500);
+    </script>
+    <script> CKEDITOR.replace('editor')</script> -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
 </script> 

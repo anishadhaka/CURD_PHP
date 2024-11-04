@@ -69,8 +69,8 @@ if (isset($_POST['submit'])) {
     <h3 class="edit"> Edit Profile </h3>
     <h4 class="done">Done</h4>
 
-      <h1>  <i class="fa-solid fa-user"></i></h1>
-      <h3> Change Profile Photo </h3>
+      <h1 class="image">  <img src="girl.png" alt="NOIMAGE"/></h1>
+      <h3 > <a href="image/default.png">Change Profile Photo </a></h3>
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>">
          <div class="inputcontainer">
@@ -89,9 +89,10 @@ if (isset($_POST['submit'])) {
             <input type="email"name="email" id="email" class="inputFieldRequired"  placeholder="enter your email" value="<?php echo $row['email']; ?>" data-errorid="#emailerror"/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
         </div>
-        <div class="change"><input type="text" value="Switch to professional account"/>
-        <input type="text" value="Create Avatar"/>
-        <input type="text" value="Personal information setting"/></div>
+        <div class="change">
+        <lable for="bio">Bio:</lable> 
+        <textarea> Enjoying the simple things in life. </textarea>
+        
           <!-- <input type="submit" value="update" id="submit"  class="submit" />
           <input type="reset" value="reset"/>
           <p>
