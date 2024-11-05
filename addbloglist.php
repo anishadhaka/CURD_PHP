@@ -39,8 +39,8 @@ $error = '';
       $folder = 'image/'.$file_name;
      
       // $encryptpass = sha1($password);
-      $needheight = 150;
-      $needwidth = 200;
+      $needheight = 500;
+      $needwidth = 500;
   
       $arrtest = getimagesize($tempname);
   
@@ -48,7 +48,9 @@ $error = '';
        $actualheight = $arrtest[1];
        if($needwidth > $actualwidth && $needheight > $actualheight){
         $sql="INSERT INTO `customer`( `name`, `title`, `description`, `createdate`, `updatedate`, `deletestatus`, `image`)
-         VALUES ('$name','$title','$description','$createdate','$updatedate','$deletestatus','$file_name')";
+         VALUES ('$name','$title','$description','$createdate','$updatedate','$deletestatus','$folder')";
+
+        //  echo $sql;die;
                  
                  $result = mysqli_query($conn, $sql);
                  if(move_uploaded_file($tempname,$folder)){
@@ -133,7 +135,7 @@ $createdate=date('Y-m-d ');
             .catch( error => {
                 console.error( error );
             } );
-            editor.resize(300,500);
+            editor.resize(500,500);
 </script>
 <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
 </script> 

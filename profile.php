@@ -65,12 +65,12 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="border" >
         
-            <h4 class="cancel">Cancel</h4>
+            <!-- <h4 class="cancel">Cancel</h4> -->
     <h3 class="edit"> Edit Profile </h3>
-    <h4 class="done">Done</h4>
+    <!-- <h4 class="done">Done</h4> -->
 
       <h1 class="image">  <img src="girl.png" alt="NOIMAGE"/></h1>
-      <h3 > <a href="image/default.png">Change Profile Photo </a></h3>
+      <h3 > <a href=""> Profile Photo </a></h3>
       <form  name="form" method="post"  id="form"  onsubmit="return validateForm()" >
       <input type="hidden" id="id" name="id" value="<?php echo $row['id']; ?>">
          <div class="inputcontainer">

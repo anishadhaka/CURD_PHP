@@ -14,7 +14,7 @@
         
          <li style=""><a href="profile.php"> <i class="fa-solid fa-user"></i> Profile</a></li>
          <li><a href="userdata.php"> <i class="fa-solid fa-rectangle-list"></i> User</a></li>
-         <li><a href="bloglist.php"> <i class="fa-regular fa-paper-plane"></i>  Block_List</a></li>
+         <li><a href="bloglist.php"> <i class="fa-regular fa-paper-plane"></i>  Blog_List</a></li>
          <li><a href=""> <i class="fa-regular fa-paper-plane"></i>  login</a></li>
          <li><a href=""> <i class='fas fa-folder' style='font-size:20px;color:white'></i> Update Password</a></li>
          <li><a  href=""> <i class="fa-solid fa-chart-line" style='font-size:20px;color:white'></i> Search Data</a></li>
@@ -48,10 +48,12 @@
                     <form method="POST">
                        <button name="Logout" id="log1">Log Out</button>
                     </form>
+                   
                   </div>
                   </div>
+                  <button><a href="blogsite.php"><i class="fa-solid fa-paperclip" ></i></a></button>
                   </div>
-                  <br>
+                  
                  
                    <!-- <div class="nav2">
                      <div><a href="main.php">HOME</a></div>

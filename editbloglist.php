@@ -1,64 +1,70 @@
-
 <?php
-
-  session_start();
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "customer";
-  $conn = mysqli_connect($servername, $username, $password, $dbname) or die("connection failed");
-  
-   
-    if (isset($_POST["submit"])) {
-      
-      
-      $name = $_POST['name'];
-      
-      $title = $_POST['title'];
-      $id = $_POST['id'];
-      $description = $_POST['description'];
-      $createdate = $_POST['createdate'];
-      $updatedate = $_POST['updatedate'];
-      $deletestatus = $_POST['deletestatus'];
-      $file = $_FILES['image']['name'];
-     
-        $file_name = str_replace(" ", "", $file);
-        $tempname= $_FILES['image']['tmp_name'];
-        $folder = 'image/'.$file_name;
-      
-      
-    $sql = 'UPDATE `customer` SET `name` = "' . $name . '",`title` = "' . $title . '", `description` = "' . $description . '",
-     `createdate` = "' . $createdate . '" , `updatedate` = "' .$updatedate . '", `deletestatus` = "' .$deletestatus . '" , `image` = "' .$file_name . '"WHERE `id` = "'. $id.'";';
-     
-    // print_r($sql); die;
-    if (mysqli_query($conn, $sql)) {
-      header('location: bloglist.php');
-    } else {
-        echo "Error updating record: " . mysqli_error($conn);
-    }
-}
-  //for fetch data
-  // $id = $_SESSION['id'];
-  
-  $id =isset($_GET['id'])?$_GET['id']:print_r(" ");
-
-  $sql = "SELECT *  FROM `customer` WHERE `id` = '$id';";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  $Updatetime=date('Y-m-d ');
-
-?>
-<?php
-
+session_start();
 if (!isset($_SESSION['username'])) {
-  header('location: login.php');
+    header('location: login.php');
 }
 ?>
 <?php
-if (isset($_POST['update'])) {
-  session_destroy();
-  header('location: bloglist.php');
+if (isset($_POST['Logout'])) {
+    session_destroy();
+    header('location: login.php');
 }
+?>
+<?php
+
+$id = $_GET['id'];
+$con = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
+
+/*update */
+
+if (isset($_POST["submit"])) {
+  $name = $_POST['name'];
+  $title = $_POST['title'];
+  $description = $_POST['description'];
+  $createdate = $_POST['createdate'];
+  $updatedate = $_POST['updatedate'];
+  $deletestatus = $_POST['deletestatus'];
+  $file = $_FILES['image']['name'];
+  $file_name = str_replace(" ", "", $file);
+  $tempname= $_FILES['image']['tmp_name'];
+  $folder = 'image/'.$file_name;
+    $needheight = 500;
+    $needwidth = 500;
+
+    $arrtest = getimagesize($tempname);
+
+     $actualwidth = $arrtest[0];
+     $actualheight = $arrtest[1];
+
+     if($needwidth >= $actualwidth && $needheight >= $actualheight){
+        $sql =' UPDATE `customer` SET `name`="' . $name . '",`title`="' . $title . '",`description`="' . $description . '",
+         `createdate`="' . $createdate . '",`updatedate`="' . $updatedate . '",`deletestatus`="' . $deletestatus. '", 
+         `image`="' . $folder . '"  WHERE `customer`.`id` = ' . $id;
+        //  echo $sql;die;
+         $result = mysqli_query($con, $sql);
+        if(move_uploaded_file($tempname,$folder)){
+          header("location:bloglist.php");
+    
+        }
+        else{
+            echo"file not upload";
+        }
+     }
+     else{ $error = "size should be width=200px height=150px";
+    }
+        
+}
+
+/*===============for update============End==============*/
+
+//for fetch data
+$id = $_GET['id'];
+
+
+$sql = "SELECT *  FROM `customer` WHERE `id` = '$id';";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);
+$Updatetime=date('Y-m-d ');
 ?>
   
 <html>
@@ -85,10 +91,15 @@ if (isset($_POST['update'])) {
             <span id="numerror"  class="error" style="color: red;"></span><br>
          </div>
          
-         <div class="inputcontainer">
+         <!-- <div class="inputcontainer">
             <lable for="Description">Description</lable> <br>
             <input type="textarea"name="description" id="email" class="inputFieldRequired" style="width:100%;height:30px;border:1px solid" placeholder="" value="<?php echo $row['description']; ?>" data-errorid="#emailerror" required/><br>
             <span id="emailerror"  class="error" style="color: red;"></span><br>  
+        </div> -->
+        <div class="inputcontainer">
+        <lable for="Description">Description</lable> <br>
+        <textarea name="description" id="email" class="inputFieldRequired" placeholder="" value="<?php echo $row['description']; ?>" data-errorid="#emailerror" ></textarea>  
+        <span id="emailerror"  class="error" style="color: red;"></span><br>
         </div>
         
          <div class="inputcontainer">
@@ -108,7 +119,7 @@ if (isset($_POST['update'])) {
         </div> 
         <div class="image1">
               <label>Image</label>
-              <img src="<?php echo $row['image'] ?>"/>
+              <img src="image/<?php echo $row['image'] ?>"/>
               <input type="file" id="image" name="image"/>
               <span style="color:red"><?php echo isset($error)?$error:'' ?></span>
           </div>

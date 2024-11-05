@@ -15,69 +15,55 @@ if (isset($_POST['Add-Blog'])) {
     header('location: addbloglist.php');
 }
 ?>
+<?php
+if (isset($_POST['Blog-Recycle'])) {
+    header('location: recycle.php');
+}
+?>
 
 <?php
 
 $conn = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
-// delete data
-if (isset($_POST['delete'])) {
-    $id = $_POST['delete'];
-    header('location: bloglist.php');
 
-    $sql = "DELETE FROM `customer` where id=$id";
-    // echo $sql;
-    // die;
+        // delete status
+        if (isset($_POST['recycle'])) {
+            $id = $_POST['recycle'];
+            $sql = 'UPDATE `customer` SET `recycle` = "' . 0 . '" WHERE `customer`.`id` = ' . $id;
+            if (mysqli_query($conn, $sql)) {
+                header('location: bloglist.php');
+            } else {
+                echo "data not delete";
+            }
+        }
+        ?> 
 
-    if (mysqli_query($conn, $sql)) {
-
-        header('location: bloglist.php');
-    } else {
-        echo "data not delete";
-    }
-}
-
-
-?>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
-$sql = "SELECT * FROM `customer`;";
-$result = mysqli_query($conn, $sql);
-
-?>
-<?php
-
-if (!isset($_SESSION['username'])) {
-  header('location: login.php');
-}
-?>
-<?php
-if (isset($_POST['Logout'])) {
-  session_destroy();
-  header('location: login.php');
-}
-?>
 <?php
 // fetch  data
-$limit = 5;
+$con = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
+
+$limit = 4;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start_serial = $limit * ($page - 1) + 1;
 $offset = ($page - 1) * $limit;
-$sql = "SELECT * FROM `customer` LIMIT {$offset},{$limit}";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM `customer` where recycle=1 LIMIT {$offset},{$limit}"  ;
+$result = mysqli_query($con, $sql);
 
 ?>
 
 
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="./css/userdata.css">
+<link rel="stylesheet" href="./css/bloglist.css">
 <?php include 'main.php';?>
 
 <body>
    
        <div class="main_content">
             <h1 >Bloglist <i class="fa-solid fa-user"></i> 
+            
             <button class="add-btn"><a href="addbloglist.php">  Blog_List <i class="fa-solid fa-plus"></i></a></button></h1>
+            <button class="add-btn2"><a href="recycle.php">  recycle </a></button></h1>
+          
             <!-- <button class="logout-btn"><a href="main.php"><i class="fa-solid fa-right-from-bracket"></i></a></button> -->
                    <table class="center">
                        <tr>
@@ -109,14 +95,14 @@ $result = mysqli_query($conn, $sql);
                                <td> <?php echo $row['deletestatus']; ?></td>
                                <td> <a href="editbloglist.php?id=<?php echo $row['id'] ?>" class=""><i class="fa-solid fa-pen-to-square"></i></a></td>
                                <td>
-                                   <form action="#" method="POST">
-                                       <button type="submit" class="btn" name="delete" value="<?php echo $row['id'] ?>" style="    padding: 5px;
-                                          background: azure;
-                                          border-radius: 7px;
-                                          border: 1px solid grey;"><i class="fa-solid fa-trash"></i></button>
-                                   </form>
+                               <form action="#" method="POST">
+                                    <button type="submit" class="btn" name="recycle" value="<?php echo $row['id'] ?>"style="    padding: 5px;
+                                       background: azure;
+                                       border-radius: 7px;
+                                       border: 1px solid grey;"><i class="fa-solid fa-trash"></i></button>
+                                </form>
                                </td>
-                               <td> <img src="image/<?php echo $row['image'] ?>"/></td>
+                               <td> <img src="<?php echo $row['image'] ?>"/></td>
                                <!-- <td> <a href="updatepass.php" class=""><i class="fa-solid fa-c"></i></a></td> -->
                        </tr>
                    <?php
@@ -145,5 +131,5 @@ $result = mysqli_query($conn, $sql);
                 ?>
          
        </div>
-       <img src="image/<?php echo $row['image'] ?>"/>
+       <!-- <img src="<?php echo $row['image'] ?>"/> -->
 </body>

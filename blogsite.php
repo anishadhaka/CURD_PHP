@@ -1,8 +1,7 @@
 <?php
-$id="";
 $con = mysqli_connect("localhost", "root", "", "customer") or die("connection failed");
 
-$sql = "SELECT * FROM `customer` where id=2 "  ;
+$sql = "SELECT * FROM `customer` where recycle=1 "  ;
 $result = mysqli_query($con, $sql);
 ?>
 <!DOCTYPE html>
@@ -10,175 +9,208 @@ $result = mysqli_query($con, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attractive Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Attractive customer</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <style>
-         * {
-         box-sizing: border-box;
-         margin: 0;
-         padding: 0;
-     }
-     
-     body {
-         font-family: 'Poppins', sans-serif;
-         line-height: 1.6;
-         color: #333;
-         background-color: #f8f9fa;
-     }
-     
-     header {
-         background-color: #ffffff;
-         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-         position: sticky;
-         top: 0;
-         z-index: 1000;
-     }
-     
-     nav {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 1rem 5%;
-         max-width: 1200px;
-         margin: 0 auto;
-     }
-     
-     nav h1 {
-         font-size: 1.5rem;
-         font-weight: 600;
-         color: #3498db;
-     }
-     
-     nav ul {
-         display: flex;
-         list-style: none;
-     }
-     
-     nav ul li {
-         margin-left: 2rem;
-     }
-     
-     nav a {
-         color: #333;
-         text-decoration: none;
-         font-weight: 400;
-         transition: color 0.3s ease;
-     }
-     
-     nav a:hover {
-         color: #3498db;
-     }
-     
-     main {
-         padding: 2rem 5%;
-         max-width: 1200px;
-         margin: 0 auto;
-     }
-     
-     h2 {
-         margin-bottom: 1.5rem;
-         font-size: 2rem;
-         color: #2c3e50;
-     }
-     
-     article {
-         background-color: #ffffff;
-         border-radius: 8px;
-         overflow: hidden;
-         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-         transition: transform 0.3s ease, box-shadow 0.3s ease;
-     }
-     
-     article:hover {
-         transform: translateY(-5px);
-         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-     }
-     
-     .post-image {
-         height: 200px;
-         background-size: cover;
-         background-position: center;
-     }
-     
-     .post-content {
-         padding: 1.5rem;
-     }
-     
-     .post-content h3 {
-         margin-bottom: 0.5rem;
-         font-size: 1.25rem;
-         color: #2c3e50;
-     }
-     
-     .read-more {
-         display: inline-block;
-         background-color: #3498db;
-         color: #ffffff;
-         padding: 0.5rem 1rem;
-         text-decoration: none;
-         border-radius: 4px;
-         margin-top: 1rem;
-         transition: background-color 0.3s ease;
-     }
-     
-     .read-more:hover {
-         background-color: #2980b9;
-     }
-     
-     .post-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         gap: 2rem;
-     }
-     
-     footer {
-         background-color: #2c3e50;
-         color: #ffffff;
+           * {
+           box-sizing: border-box;
+           margin: 0;
+           padding: 0;
+       }
+       
+       body {
+           font-family: 'Poppins', sans-serif;
+           line-height: 1.6;
+           color: #333;
+           background-color: #f8f9fa;
+       }
+       
+       header {
+           background-color: #ffffff;
+           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+       }
+       
+       nav {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 1rem 5%;
+           max-width: 1200px;
+           margin: 0 auto;
+       }
+       
+       nav h1 {
+           font-size: 1.5rem;
+           font-weight: 600;
+           color: #3ea0a3;
+       }
+       
+       nav ul {
+           display: flex;
+           list-style: none;
+       }
+       
+       nav ul li {
+           margin-left: 2rem;
+       }
+       
+       nav a {
+           color: #333;
+           text-decoration: none;
+           font-weight: 400;
+           transition: color 0.3s ease;
+       }
+       
+       nav a:hover {
+           color: #3498db;
+       }
+       
+       main {
+           padding: 2rem 5%;
+           max-width: 1200px;
+           margin: 0 auto;
+       }
+       
+       h2 {
+           margin-bottom: 1.5rem;
+           font-size: 2rem;
+           color: #2c3e50;
+       }
+       
+       article {
+           background-color: #ffffff;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+       }
+       
+       article:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+       }
+       
+       .post-image {
+           height: 200px;
+           background-size: cover;
+           background-position: center;
+       }
+       
+       .post-content {
+           padding: 1.5rem;
+       }
+       
+       .post-content h3 {
+           margin-bottom: 0.5rem;
+           font-size: 1.25rem;
+           color: #2c3e50;
+       }
+       
+       .read-more {
+           display: inline-block;
+           background-color: #3ea0a3;
+           color: #ffffff;
+           padding: 0.5rem 1rem;
+           text-decoration: none;
+           border-radius: 4px;
+           margin-top: 1rem;
+           transition: background-color 0.3s ease;
+       }
+       
+       .read-more:hover {
+           background-color: #2980b9;
+       }
+       
+       .post-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 2rem;
+       }
+       
+       footer {
+           background-color: #3ea0a3;
+           color: #ffffff;
+           text-align: center;
+           padding: 1.5rem;
+           margin-top: 2rem;
+       }
+       
+       #featured-post .featured {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           gap: 2rem;
+       }
+       
+       #featured-post .post-image {
+           height: 100%;
+           min-height: 300px;
+       }
+       .content {
+         height: 430px;
+         /* width: 45%; */
+         /* color: #fff;
+         font-size: 24px;
+         line-height: 100px; 
          text-align: center;
-         padding: 1.5rem;
-         margin-top: 2rem;
-     }
-     
-     #featured-post .featured {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         gap: 2rem;
-     }
-     
-     #featured-post .post-image {
-         height: 100%;
-         min-height: 300px;
-     }
-     
-     @media (max-width: 768px) {
-         nav {
-             flex-direction: column;
-         }
-     
-         nav ul {
-             margin-top: 1rem;
-         }
-     
-         nav ul li {
-             margin-left: 0;
-             margin-right: 1rem;
-         }
-     
-         #featured-post .featured {
-             grid-template-columns: 1fr;
-         }
-     
-         #featured-post .post-image {
-             height: 200px;
-         }
-     }
+         background-color: grey;
+         margin: 5px;
+         border: 1px solid lightgrey; */ 
+         display: none;
+         
+       }
+       #loadMore {
+         width: 200px;
+         color: #fff;
+         display: block;
+         text-align: center;
+         margin: 20px auto;
+         padding: 10px;
+         border-radius: 10px;
+         border: 1px solid transparent;
+         background-color: #3ea0a3;
+         transition: .3s;
+       }
+       #loadMore:hover {
+         color: blue;
+         background-color: #fff;
+         border: 1px solid blue;
+         text-decoration: none;
+       }
+       @media (max-width: 768px) {
+           nav {
+               flex-direction: column;
+           }
+       
+           nav ul {
+               margin-top: 1rem;
+           }
+       
+           nav ul li {
+               margin-left: 0;
+               margin-right: 1rem;
+           }
+       
+           #featured-post .featured {
+               grid-template-columns: 1fr;
+           }
+       
+           #featured-post .post-image {
+               height: 200px;
+           }
+           
+       }
+
 </style>
 <body>
     <header>
         <nav>
-            <h1>Attractive Blog</h1>
+            <h1>Attractive customer</h1>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -203,21 +235,21 @@ $result = mysqli_query($con, $sql);
         <section id="recent-posts">
             <h2>Recent Posts</h2>
             <div class="post-grid">
-                < <?php
+                <?php
                 while ($row = mysqli_fetch_array($result)){
                 ?>
                 
                 <article class="content">
                    
-                <div class="post-image" >
-                    <img src="image/<?php echo $row['image'] ?>"  style="    width: -webkit-fill-available;
-    height: 15rem;object-fit:none;"/>
+                    <div class="post-image" >
+                    <img src="<?php echo $row['image'] ?>"  style="    width: -webkit-fill-available;
+                       height: 15rem;object-fit:none;"/>
                     </div>
                     <div class="post-content">
-                     <h3><?php echo $row['Title']; ?></h3>
-                     <p><?php echo $row['Description']; ?></p>
-                     <p> Create Date: <?= $row['Create Date']; ?></p>
-                     <p> Update Date: <?= $row['Update Date']; ?></p>
+                     <h3><?php echo $row['title']; ?></h3>
+                     <p><?php echo $row['description']; ?></p>
+                     <p> Create Date: <?= $row['createdate']; ?></p>
+                     <p> Update Date: <?= $row['updatedate']; ?></p>
                      
                         <a href="#" class="read-more">Read More</a>
                     
@@ -230,10 +262,11 @@ $result = mysqli_query($con, $sql);
                 
             </div>
         </section>
+ 
     </main>
 
     <footer>
-        <p>&copy; 2024 Attractive Blog. All rights reserved.</p>
+        <p>&copy; 2024 Attractive customer. All rights reserved.</p>
     </footer>
     <script>
       $(document).ready(function(){
